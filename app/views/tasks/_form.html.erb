@@ -1,0 +1,21 @@
+  <% if task.errors.present? %>
+    <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= form_with(model: task, local: true) do |form| %>
+  <div>
+    <%= form.label :title, "任務名稱" %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :content, "任務內容" %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit "確認送出" %>
+<% end %>
+
+<% link_to "返回任務列表", tasks_path %>
