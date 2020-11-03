@@ -1,0 +1,26 @@
+addons:
+  chrome: stable
+language: ruby
+rvm:
+  - 2.6.5
+
+cache:
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
+
+services:
+  - postgresql
+
+before_script:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn install
+  - bundle exec rake db:create
+
+script:
+  - bundle exec rake db:migrate:reset RAILS_ENV=test
+  - bundle exec rspec
