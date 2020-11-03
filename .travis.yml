@@ -19,7 +19,6 @@ before_script:
   - node -v
   - npm i -g yarn
   - yarn install
-  - cp config/database.travis.yml config/database.yml
   - bundle exec rake db:create
 
 script:
