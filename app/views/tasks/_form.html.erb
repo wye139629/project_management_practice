@@ -8,14 +8,14 @@
 
 <%= form_with(model: task, local: true) do |form| %>
   <div>
-    <%= form.label :title, "任務名稱" %>
+    <%= form.label :title, t("task.title") %>
     <%= form.text_field :title %>
   </div>
   <div>
-    <%= form.label :content, "任務內容" %>
+    <%= form.label :content, t("task.content") %>
     <%= form.text_area :content %>
   </div>
-  <%= form.submit "確認送出" %>
+  <%= form.submit t("submit") %>
 <% end %>
 
-<% link_to "返回任務列表", tasks_path %>
+<%= link_to t("task.back"), tasks_path %>
