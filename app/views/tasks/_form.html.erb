@@ -1,0 +1,21 @@
+  <% if task.errors.present? %>
+    <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= form_with(model: task, local: true) do |form| %>
+  <div>
+    <%= form.label :title, t("task.title") %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :content, t("task.content") %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit t("submit") %>
+<% end %>
+
+<%= link_to t("task.back"), tasks_path %>

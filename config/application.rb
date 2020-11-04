@@ -10,6 +10,8 @@ module ProjectManagement
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.i18n.default_locale = "zh-TW"
+    config.time_zone = "Taipei"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
