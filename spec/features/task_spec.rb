@@ -3,12 +3,14 @@ require 'rails_helper'
 RSpec.feature "Tasks", type: :feature do
   describe "task crud" do
     context "index" do
-      it "index" do
-        task1 = create(:task)
-        task2 = create(:task)
-        visit "/tasks"
-
-        expect(page).to have_content("this is task test", count: 2)
+      it "render task" do
+        (1..5).each do |i|
+          create(:task , title: "Task #{i}")
+        end
+        # task1 = create(:task)
+        # task2 = create(:task)
+        visit tasks_path
+        expect(page.all("tbody tr").to_a.map{|tr| tr.all("td").first.text}).to eq((1..5).map{|i| "Task #{i}"}.reverse)
       end
     end
 
