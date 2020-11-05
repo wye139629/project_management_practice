@@ -1,7 +1,12 @@
 require 'capybara'
 
+require 'capybara'
+
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+	options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+	# Capybara::Selenium::Driver.new(app, browser: :chrome)
+	# 本機測試使用，自動開瀏覽器測試。
+	Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
 Capybara.javascript_driver = :chrome
