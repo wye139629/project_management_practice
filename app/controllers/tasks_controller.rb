@@ -3,7 +3,12 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    if params["taskEnd"] == "task_end"
+      @tasks = Task.order(:end_date)
+      render json: @tasks
+    else
+      @tasks = Task.order(created_at: :desc)
+    end
   end
 
   def show
@@ -39,7 +44,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title, :content)
+    params.require(:task).permit(:title, :content, :start_date, :end_date)
   end
 
   def find_task
