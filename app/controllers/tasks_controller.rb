@@ -3,7 +3,12 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    if params["taskEnd"] == "task_end"
+      @tasks = Task.order(:end_date)
+      render json: @tasks
+    else
+      @tasks = Task.order(created_at: :desc)
+    end
   end
 
   def show

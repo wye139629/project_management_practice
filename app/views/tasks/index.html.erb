@@ -4,8 +4,8 @@
       <tr>
         <td><%= t("task.title")%></td>
         <td><%= t("task.content") %></td>
-        <td><%= t("task.start_date") %></td>
-        <td><%= t("task.end_date") %></td>
+        <td class="start_date"><%= t("task.start_date") %></td>
+        <td class="end_date"><%= t("task.end_date") %></td>
         <td>處理</td>
       </tr>
     </thead>
@@ -26,3 +26,15 @@
   </table>
 
 <%= link_to t("task.new"), new_task_path%>
+<template>
+    <tr>
+      <td class="task_title"></td>
+      <td class="task_content"></td>
+      <td class="task_start_date"></td>
+      <td class="task_end_date"></td>
+      <td>
+        <a href="" class = "task_edit">編輯</a>
+        <a href="" class = "task_delete" data-method="delete" data-confirm="確定刪除？">刪除</a>
+      </td>
+    </tr>
+</template>
